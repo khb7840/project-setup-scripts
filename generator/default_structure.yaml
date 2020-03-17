@@ -1,0 +1,122 @@
+# Default project directory structure
+# Author: Hyunbin Kim (khb7840@gmail.com)
+# Date: 2020. 03. 11.
+
+prefix: "./"
+
+# directories to generate
+dir:
+  # Python code directory
+  - path: "py/"
+  - path: "py/toy/"
+  # Data directory
+  - path: "data/"
+  - path: "data/raw/"
+  - path: "data/processed/"
+  # R code directory
+  - path: "r/"
+  # GO code directory
+  - path: "go/"
+  - path: "go/src/"
+  # Other scripts in here
+  - path: "scripts/"
+  # Note directory
+  - path: "note/"
+  # Presentation directory
+  - path: "presentation/"
+  # Result directory
+  - path: "results/"
+  - path: "results/manuscript/"
+  - path: "results/figures/"
+  # Github repos
+  - path: "repo/"
+  # dev folder
+  - path: "dev/"
+
+# files to generate
+file:
+  # README.md
+  - path: "README.md"
+    description: "A README file"
+    type: "markdown"
+    title: "README"
+    subtitles: ["Getting_Started", "Installation", "Example", "Features"]
+  # summary.md
+  - path: "results/SUMMARY.md"
+    description: "A document to summarize results"
+    type: "markdown"
+    title: "RESULTS_SUMMARY"
+    subtitles:
+      ["Introduction", "Methods", "Results", "Discussion", "References"]
+  # research_note.md
+  - path: "note/research_note.md"
+    description: "A research note for the project"
+    type: "markdown"
+    title: "RESEARCH_NOTE"
+    subtitles: ["Ideas", "Brainstorming", "TODOs", "Design", "Others"]
+  # Main python code
+  - path: "py/main.py"
+    description: "A python code for project"
+    type: "python"
+    libraries:
+      [
+        "os",
+        "sys",
+        "datetime",
+        "collections",
+        "numpy",
+        "pandas",
+        "scipy",
+        "matplotlib",
+        "toy.toy",
+      ]
+    define: ["variable:DATA_DIR", "variable:RESULT_DIR", "function:main"]
+  - path: "py/__init__.py"
+    description: "Author: Hyunbin Kim (khb7840@gmail.com)"
+    type: "python"
+  # python class to import
+  - path: "py/toy/toy.py"
+    description: "ToyClass: a class which is imported by main.py"
+    type: "python"
+    libraries:
+      [
+        "os",
+        "sys",
+        "datetime",
+        "collections",
+        "re",
+        "math",
+        "numpy",
+        "pandas",
+        "scipy",
+        "matplotlib",
+      ]
+    define: ["class:ToyClass"]
+  # R main script
+  - path: "r/main.r"
+    description: "An R script for project"
+    type: "r"
+    libraries: ["ggplot2", "ggpubr"]
+    define:
+      ["variable:DATA_DIR", "variable:RESULT_DIR", "list:data", "function:main"]
+  # Main python script
+  - path: "scripts/scripts.py"
+    description: "A python script with command line arguments"
+    type: "python"
+    libraries:
+      [
+        "os",
+        "sys",
+        "gooey",
+        "datetime",
+        "argparse",
+        "collections",
+        "multiprocessing",
+      ]
+    define: ["function:main"]
+  # Main go code
+  - path: "go/src/main.go"
+    description: "A go code for project"
+    type: "go"
+    libraries: ["fmt", "log"]
+    define: ["struct:Data", "function:main"]
