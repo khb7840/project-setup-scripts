@@ -19,7 +19,7 @@ class DirGenerator:
 
     def write(self, verbose=True):
         # make directory
-        os.mkdir(path=self.path)
+        make_basedir(path=self.path)
         if verbose == True:
             print("Successfully generated: " + self.path)
 

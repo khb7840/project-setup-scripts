@@ -20,12 +20,13 @@ class MarkdownGenerator:
         # If title is not given in constructor,
         # use timetag string as title
         if title == "":
-            timetag_title = now.strftime("%YY%mm%dd_%HH%MM%SS")
+            timetag_title = now.strftime("%Y%m%d_%H%M%S")
             self.title = timetag_title
         else:
             self.title = title
 
         # markdown file path: "./{TITLE}.md"
+        self.type = "markdown"
         self.path = "./" + self.title + ".md"
 
         # Setting author info
@@ -147,10 +148,11 @@ class MarkdownGenerator:
         if config_dict["type"] != "markdown":
             raise TypeError("type should be markdown")
         # set values
-        self.metadata["Description"] = config_dict["description"]
         self.intro_sentence = config_dict["description"]
         self.path = config_dict["path"]
         self.title = config_dict["title"]
         self.subtitles = config_dict["subtitles"]
+        self.metadata["Description"] = config_dict["description"]
+        self.metadata["Title"] = config_dict["title"]
         if verbose == True:
             print("Config file loaded: " + config_dict["path"])
